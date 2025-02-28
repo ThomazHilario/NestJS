@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CrudService } from './crud.service';
 
 @Controller('crud')
@@ -6,17 +6,25 @@ export class CrudController {
   constructor(private readonly crudService: CrudService) {}
 
   @Get()
-  async getListUsers(){
+  async getMessages(){
+    return [
+      { message:'Hello World' }
+    ]
+  }
+
+  @Get('/:id')
+  async getOnlyOneMessage(@Param() param:{id:string}){
     return {
-      message:'Hello World'
+      message:param.id
     }
   }
 
   @Post()
-  async createNewUser(@Body() values:{email:string, password:string | number}){
+  async createNewUser(@Body() values:{id:string, name:string, message:string}){
     return {
-      email:values.email,
-      password:values.password
+      id:values.id,
+      name:values.name,
+      message:values.message
     }
   }
 }
