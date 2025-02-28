@@ -13,4 +13,18 @@
 - Algo que vai iniciar o nestJs, pode se dizer que é o ponto de partida da aplicação nestJs.
 
 ### Decorators:
-- 
+- Algo que modifica e monitora algo em tempo de execução. 
+- Exemplo: eu tenho um decorator de rota get, que é responsável por ter uma rota passando um parâmetro, caso eu passe o parâmetro eu posso fazer alguma coisa com este parâmetro na função abaixo do decorator.
+
+### Module:
+- Divisões de seções da aplicação seja em modulos, controllers e providers, lá podemos importar tudo que se referente a cada seção.
+
+### Controllers: 
+- Classe onde será feita as rotas da aplicação.
+
+### Service:
+- Prepara os dados para serem devolvidos a quem solicitou, como exemplo: uma busca de dados em um banco de dados.
+
+## RestAPI:
+- Muito comum em nestJS desenvolvermos RestAPI, que é uma interface de programação de aplicações (API), que segue um conjunto de regras para criar uma API web. São utilizadas para troca de informação entre cliente (alguem que solicita uma informação) e servidor (alguem que prepara e envio os dados pedido pelo cliente).
+- O Rest segue alguns padrões de desenvolvimento como as solicitações http que são: Get, Post, Put, Patch, Delete.
