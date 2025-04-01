@@ -28,3 +28,8 @@
 ## RestAPI:
 - Muito comum em nestJS desenvolvermos RestAPI, que é uma interface de programação de aplicações (API), que segue um conjunto de regras para criar uma API web. São utilizadas para troca de informação entre cliente (alguem que solicita uma informação) e servidor (alguem que prepara e envio os dados pedido pelo cliente).
 - O Rest segue alguns padrões de desenvolvimento como as solicitações http que são: Get, Post, Put, Patch, Delete.
+
+## DTOS:
+- Muito utilizados para fazer validações de campos em solicitações http, permite verificar se uma solicitação recebe os dados certos para prosseguir com a requisição.
+- É necessário instalar duas dependências: npm i class-validator class-transformer
+- Também é necessário configurar no bootstrap o ValidationPipe para aceitar as validações dos DTOs: `app.useGlobalPipes(new ValidationPipe())`. OBS: é necessário importar o ValidationPipe!
