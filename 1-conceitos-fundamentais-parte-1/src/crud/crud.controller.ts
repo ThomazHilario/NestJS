@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { CrudService } from './crud.service';
 
-import { CreateMessageDTO, UpdateDataDTO } from './Dtos/message-dto';
+import { CreateMessageDTO, UpdateDataDTO, UpdateAllDataDTO } from './Dtos/message-dto';
 @Controller('crud')
 export class CrudController {
   constructor(private readonly crudService: CrudService) {}
@@ -24,8 +24,8 @@ export class CrudController {
   }
 
   @Put()
-  async updateDataMessage(@Body() values:CreateMessageDTO){
-    return values
+  async updateDataMessage(@Body() values:UpdateAllDataDTO){
+    return await this.crudService.updataDataMessage(values)
   }
 
   @Patch()

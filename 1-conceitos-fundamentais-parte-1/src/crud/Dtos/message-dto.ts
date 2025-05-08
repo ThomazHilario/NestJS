@@ -19,3 +19,18 @@ export class UpdateDataDTO{
     @IsNotEmpty()
     message:string;
 }
+
+export class UpdateAllDataDTO{
+
+    @IsString()
+    @IsNotEmpty()
+    id:string;
+
+    @IsString()
+    @IsNotEmpty()
+    name: string
+
+    @IsString()
+    @IsNotEmpty()
+    message:string;
+}

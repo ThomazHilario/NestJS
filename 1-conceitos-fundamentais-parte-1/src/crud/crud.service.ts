@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMessageDTO, UpdateDataDTO } from './Dtos/message-dto';
+import { CreateMessageDTO, UpdateDataDTO, UpdateAllDataDTO } from './Dtos/message-dto';
 import { CrudRepository } from './crud.repository';
 
 @Injectable()
@@ -20,6 +20,10 @@ export class CrudService {
 
     async updateMessage(bodyValues:UpdateDataDTO){
         return await this.CrudRepository.updateMessage(bodyValues)
+    }
+
+    async updataDataMessage(bodyValues:UpdateAllDataDTO){
+        return await this.CrudRepository.updataDataMessage(bodyValues)
     }
 
     async deleteMessage(id:string){

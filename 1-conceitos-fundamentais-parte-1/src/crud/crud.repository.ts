@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import { CreateMessageDTO, UpdateDataDTO } from "./Dtos/message-dto";
+import { CreateMessageDTO, UpdateDataDTO, UpdateAllDataDTO } from "./Dtos/message-dto";
 import { PrismaService } from "src/Prisma/prisma.module";
 
 @Injectable()
@@ -77,6 +77,29 @@ export class CrudRepository{
         } catch (error) {
             return {
                 message: 'Not is possible message update!'
+            }
+        }
+    }
+
+    async updataDataMessage(bodyValues:UpdateAllDataDTO){
+        try {
+            await this.PrismaService.messages.update({
+                where: {
+                    id:bodyValues.id
+                },
+                data:{
+                 id: bodyValues.id,
+                 name: bodyValues.name,   
+                 message: bodyValues.message   
+                }
+            })
+
+            return {
+                message: 'Update all data for message!'
+            }
+        } catch (error) {
+            return {
+                message: 'Not is possible update data!'
             }
         }
     }
