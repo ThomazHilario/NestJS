@@ -4,7 +4,7 @@
 # Requisitos para começar:
 - Vs Code
 - NodeJs
-- NestJs Cli `` npm i -g @nest/cli ``
+- NestJs Cli `` npm i -g @nestjs/cli ``
 
 ## Criar um projeto Utilizando o nestJs Cli:
 ` nest new <name project> `
