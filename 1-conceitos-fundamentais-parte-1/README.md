@@ -33,3 +33,30 @@
 - Muito utilizados para fazer validações de campos em solicitações http, permite verificar se uma solicitação recebe os dados certos para prosseguir com a requisição.
 - É necessário instalar duas dependências: npm i class-validator class-transformer
 - Também é necessário configurar no bootstrap o ValidationPipe para aceitar as validações dos DTOs: `app.useGlobalPipes(new ValidationPipe())`. OBS: é necessário importar o ValidationPipe!
+
+## Banco de dados:
+- O nest é independente de banco de dados, assim podemos integrar a ele qualquer tipo de armazenamento persistente seja SQL ou noSQL.
+- PAra isso utilizamos o ORM no qual é um mapeamento de objeto relacional, no qual utiliza tabelas ou coleções de um banco de dados com classes e objetos. 
+- Cada tabela ou coleção terá uma classe que descreve sua estrutura, e as instâncias dessa classe ou objetos são os registros.
+- Os ORM mais utilizados são: typeORM e Prisma.
+
+## Prisma
+- Para utilizar o prisma devemos instalar as dependências necessárias:
+` npm install prisma --save-dev `
+
+- Invocar o CLI localmente:
+` npx prisma ` 
+
+- Agora podemos criar a configuração inicial usando o init:
+` npx prisma init `
+
+- Algumas situações que você pode fazer:
+    1 - Criar uma tabela no banco de dados e puxar a tabela para o prisma.
+    - Ápos criar a tabela no banco de dados basta usar os comandos: 
+     ` npx prisma db pull `
+     ` npx prisma generate `
+
+    2 - Criar uma tabela no prisma e fazer um push para o banco de dados.
+     - Ápos criar a tabela no prisma basta usar os comandos: 
+     ` npx prisma migrate dev `
+     ` npx prisma generate `

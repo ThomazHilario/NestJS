@@ -1,32 +1,26 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { CrudService } from './crud.service';
 
-import { CreateMessageDTO, DeleteMessageDTO, UpdateDataDTO } from './Dtos/message-dto';
+import { CreateMessageDTO, UpdateDataDTO } from './Dtos/message-dto';
 @Controller('crud')
 export class CrudController {
   constructor(private readonly crudService: CrudService) {}
 
   @Get()
   async getMessages(){
-    return [
-      { message:'Hello World' }
-    ]
+    const messagesOrNo = await this.crudService.getMessages()
+
+    return messagesOrNo
   }
 
   @Get('/:id')
-  async getOnlyOneMessage(@Param() param:{id:string}){
-    return {
-      message:param.id
-    }
+  async getOnlyOneMessage(@Param() { id }:{id:string}){
+    return await this.crudService.getOneMessage(id)
   }
 
   @Post()
   async createNewUser(@Body() values:CreateMessageDTO){
-    return {
-      id:values.id,
-      name:values.name,
-      message:values.message
-    }
+    return await this.crudService.createMessages(values)
   }
 
   @Put()
@@ -36,11 +30,11 @@ export class CrudController {
 
   @Patch()
   async updateDataParcialMessage(@Body() values:UpdateDataDTO){
-    return values
+    return await this.crudService.updateMessage(values)
   }
 
   @Delete('/:id')
-  async deleteMessage(@Param() value: DeleteMessageDTO){
-    return value
+  async deleteMessage(@Param('id') id: string){
+    return await this.crudService.deleteMessage(id)
   }
 }
