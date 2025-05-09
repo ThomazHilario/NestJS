@@ -16,3 +16,4 @@
 - Gerar um modulo: ` nest generate module <Name Module> `
 - Gerar um controller: ` nest generate controller <Name Controller> `
 - Gerar um controller em uma pasta: ` nest generate controller messages/messages --flat `
+- Gerar um Crud completo: ` nest g resource `
