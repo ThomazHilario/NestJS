@@ -49,3 +49,11 @@
 
 # CORS
 - Usa headers do protocolo HTTP para validar se o acesso será permitido em outra origem.
+
+# Uploads de arquivos com Multer
+- Podemos Subir arquivos em request utilizando o Multer, que já vem integrado junto com o nestJs.
+- Para usar, temos que configurar os decorators em uma rota no controlador.
+    - @UseInterceptors(FileInterceptor('file'))
+    - A estrutura acima Deve ser colocada acima de uma decorator de request.
+    - O FileInterceptor vai dizer em qual campo podemos enviar o arquivo.
+    - Para buscar o arquivo ao inves de usarmos o decorator @Body() utilizamos o @UploadedFile() que é especificamente para buscar o arquivo e alocar no parametros da função.
