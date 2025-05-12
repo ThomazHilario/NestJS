@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginCredentialsDTO, RegisterCredentialsDTO, ForgetCredentialsDTO } from './Dto/auth-dto';
+import { LoginCredentialsDTO, RegisterCredentialsDTO } from './Dto/auth-dto';
 import { AuthToken } from 'src/Guards/auth.guard';
 import { Response, Request } from 'express';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('auth')
 export class AuthController {
@@ -45,9 +46,11 @@ export class AuthController {
   }
 
   @UseGuards(AuthToken)
-  @Post('forget')
-  async forget(@Body() forgetCredentials: ForgetCredentialsDTO){
-
+  @UseInterceptors(FileInterceptor('file'))
+  @Post('upload')
+  async upload(@UploadedFile() file: Express.Multer.File){
+    const result = await this.authService.upload(file)
+    return result
   }
 
 }

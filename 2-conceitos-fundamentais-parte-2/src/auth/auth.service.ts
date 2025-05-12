@@ -1,7 +1,11 @@
+import 'dotenv/config'
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { users } from 'generated/prisma'
 import { UsersService } from 'src/users/users.service';
+import { writeFile } from 'fs/promises'
+import { mkdirSync, existsSync } from 'fs';
+import { join } from 'path';
 
 @Injectable()
 export class AuthService {
@@ -46,7 +50,20 @@ export class AuthService {
         }
     }
 
-    async forget(){
-
+    async upload(file: Express.Multer.File){
+        try {
+            
+            // Verifica se já tem uma pasta
+            if(!existsSync(`${process.env.FOLDER}`)){
+                mkdirSync(`${process.env.FOLDER}`, { recursive:true })
+            }
+            
+            // Salva o arquivo na pasta
+            await writeFile(join(__dirname, '..', '..', 'arquivos', `${file.originalname}`), file.buffer)
+            
+            return { Status: 'Sucess' }
+        } catch (error) {
+            return error
+        }
     }
 }

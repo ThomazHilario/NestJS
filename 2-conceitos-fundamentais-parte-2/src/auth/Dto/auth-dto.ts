@@ -24,10 +24,3 @@ export class RegisterCredentialsDTO{
     @IsNotEmpty()
     password:string
 }
-
-export class ForgetCredentialsDTO{
-    @IsString()
-    @IsEmail()
-    @IsNotEmpty()
-    email:string
-}
