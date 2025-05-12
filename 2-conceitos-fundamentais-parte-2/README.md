@@ -1,4 +1,4 @@
-# Conceitos fundamentais do NestJs - Parte 1
+# Conceitos fundamentais do NestJs - Parte 2
 
 # Pipes
 - São usados para transformar os dados que passam por ele ou para valida-los.
@@ -57,3 +57,16 @@
     - A estrutura acima Deve ser colocada acima de uma decorator de request.
     - O FileInterceptor vai dizer em qual campo podemos enviar o arquivo.
     - Para buscar o arquivo ao inves de usarmos o decorator @Body() utilizamos o @UploadedFile() que é especificamente para buscar o arquivo e alocar no parametros da função.
+
+
+# TypeORM
+- Como o prisma typeORM é um mapiador relacional de objeto, no qual facilita a interação entre o app com bancos de dados.    
+- Para adicionar o typeOrm ao projeto devemos adicionar a dependência necessária: 
+`npm i @nestjs/typeorm`
+- Após a instalação pode se ver o passo a passo de como usar aqui neste link: https://docs.nestjs.com/recipes/sql-typeorm.
+    ## Configurando o typeORM:
+    - Primeiro devemos configurar o typeOrm no modulo global a conexão com o banco de dados.
+    - Podemos Utilizar o próprio modulo do nestJs para typeORM.
+        - OBS: Podemos criar um módulo específico que faz a conexão e depois importa-lo no modulo global ou inserir diretamente no modulo global.
+    - Por questões de desenvolvimento podemos criar as nossas entidades em uma pasta Entity, e dentro da pasta criar arquivos que espelham a tabela do banco de dados usando o typeORM.
+    - No serviço devemos importar as entidades que iremos usar, e adiciona-las ao constructor para o seu consumo.
