@@ -6,6 +6,7 @@ import { UsersService } from 'src/users/users.service';
 import { writeFile } from 'fs/promises'
 import { mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import 'dotenv/config'
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
         return this.JWTService.sign({
             ...user
         }, {
-            expiresIn:'15 days',
+            expiresIn: process.env.JWT_EXPIRATION,
             subject: user.id
         })
     }
