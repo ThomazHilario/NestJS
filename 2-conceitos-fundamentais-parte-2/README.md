@@ -70,3 +70,8 @@
         - OBS: Podemos criar um módulo específico que faz a conexão e depois importa-lo no modulo global ou inserir diretamente no modulo global.
     - Por questões de desenvolvimento podemos criar as nossas entidades em uma pasta Entity, e dentro da pasta criar arquivos que espelham a tabela do banco de dados usando o typeORM.
     - No serviço devemos importar as entidades que iremos usar, e adiciona-las ao constructor para o seu consumo.
+
+# Testes em NestJs utilizando SuperTest
+- SuperTest é uma biblioteca Node.js que ajuda a testar APIs. Ele estende outra biblioteca chamada superagent, um cliente HTTP JavaScript para Node.js e o navegador. No qual podemos usar o SuperTest como uma biblioteca autônoma ou com estruturas de teste JavaScript como o Jest.
+- A dependência já vem instalada junto com o nestJS.
+- É essencial criar um banco de dados próprio para testes, para não modificar o original.

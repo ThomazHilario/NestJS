@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { users } from 'generated/prisma'
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { writeFile } from 'fs/promises'
 import { mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
