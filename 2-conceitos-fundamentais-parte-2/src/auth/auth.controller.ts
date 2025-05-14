@@ -4,7 +4,9 @@ import { LoginCredentialsDTO, RegisterCredentialsDTO } from './Dto/auth-dto';
 import { AuthToken } from 'src/Guards/auth.guard';
 import { Response, Request } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}

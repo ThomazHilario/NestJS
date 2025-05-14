@@ -75,3 +75,22 @@
 - SuperTest é uma biblioteca Node.js que ajuda a testar APIs. Ele estende outra biblioteca chamada superagent, um cliente HTTP JavaScript para Node.js e o navegador. No qual podemos usar o SuperTest como uma biblioteca autônoma ou com estruturas de teste JavaScript como o Jest.
 - A dependência já vem instalada junto com o nestJS.
 - É essencial criar um banco de dados próprio para testes, para não modificar o original.
+
+
+# Geração de Documentação automática com Swagger
+- Podemos Criar uma documenação específica da nossa API em nest utilizando o swagger.
+- Para crair essa documentação devemos instalar a dependência: 
+` npm install --save @nestjs/swagger `
+- Pós adicionada a dependência devemos configurar a swagger no arquivo main.ts, dentro da função bootstrap, antes do app.listen:
+` const config = new DocumentBuilder() `
+` .setTitle('Api documentation') `
+` .setDescription('Api routes for request and response') `
+` .setVersion('1.0')`
+` .addTag('auth')`
+` .build();`
+` const documentFactory = () => SwaggerModule.createDocument(app, config); `
+` SwaggerModule.setup('api', app, documentFactory); `
+
+- Com todas as configurações feitas, por padrão a documentação está acessível na rota /api.
+- Para configurar automaticamente as configs devemos adicionar uma tag no arquivo de configuração, e adicionar a mesma tag em um controller (@ApiTags('name')), assim acontecerá o mapeamento de rotas na documentação.
+- Podemos fornecer dados de exemplos para a documentação e deixar mais declarativo para o usuário usando um decorator para cada campo da class do dto (@ApiProperty({example:"", description:""})) que irá fornecer um example: valor do dados e uma description: para que server esse valor.
